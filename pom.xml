@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-parent</artifactId>
+        <version>2.4.5</version>
+    </parent>
+
+    <properties>
+        <!-- maven properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <maven.compiler.mavenVersion>3.3.9</maven.compiler.mavenVersion>
+        <package.output.directory>${project.build.directory}/release</package.output.directory>
+        <!-- maven plugins version -->
+        <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
+        <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.1.0</maven-dependency-plugin.version>
+        <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-site-plugin.version>3.3</maven-site-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-war-plugin.version>3.1.0</maven-war-plugin.version>
+        <!-- maven dependencies version -->
+        <!--<spring-boot-maven-plugin.version>2.0.8.RELEASE</spring-boot-maven-plugin.version>-->
+        <!--<spring-boot-dependencies.version>2.0.8.RELEASE</spring-boot-dependencies.version>-->
+        <!--<spring-cloud-dependencies.version>Finchley.SR4</spring-cloud-dependencies.version>-->
+        <!--<spring-cloud-alibaba-dependencies.version>2.0.2.RELEASE</spring-cloud-alibaba-dependencies.version>-->
+        <!-- maven dependencies version -->
+        <!--<spring-boot-maven-plugin.version>2.1.18.RELEASE</spring-boot-maven-plugin.version>-->
+        <!--<spring-boot-dependencies.version>2.1.18.RELEASE</spring-boot-dependencies.version>-->
+        <!--<spring-cloud-dependencies.version>Greenwich.SR6</spring-cloud-dependencies.version>-->
+        <!--<spring-cloud-alibaba-dependencies.version>2.1.2.RELEASE</spring-cloud-alibaba-dependencies.version>-->
+        <!-- maven dependencies version -->
+        <!--<spring-boot-maven-plugin.version>2.2.8.RELEASE</spring-boot-maven-plugin.version>-->
+        <!--<spring-boot-dependencies.version>2.2.8.RELEASE</spring-boot-dependencies.version>-->
+        <!--<spring-cloud-dependencies.version>Hoxton.SR4</spring-cloud-dependencies.version>-->
+        <!--<spring-cloud-alibaba-dependencies.version>2.2.0.RELEASE</spring-cloud-alibaba-dependencies.version>-->
+        <!-- maven dependencies version -->
+        <!--<spring-boot-maven-plugin.version>2.3.10.RELEASE</spring-boot-maven-plugin.version>-->
+        <!--<spring-boot-dependencies.version>2.3.10.RELEASE</spring-boot-dependencies.version>-->
+        <!--<spring-cloud-dependencies.version>Hoxton.SR8</spring-cloud-dependencies.version>-->
+        <!--<spring-cloud-alibaba-dependencies.version>2.2.0.RELEASE</spring-cloud-alibaba-dependencies.version>-->
+        <!-- maven dependencies version -->
+        <spring-boot-maven-plugin.version>2.4.5</spring-boot-maven-plugin.version>
+        <spring-boot-dependencies.version>2.4.5</spring-boot-dependencies.version>
+        <spring-cloud-dependencies.version>2020.0.2</spring-cloud-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>2.2.2.RELEASE</spring-cloud-alibaba-dependencies.version>
+        <!-- maven dependencies version -->
+        <junit.version>4.12</junit.version>
+        <hamcrest-core.version>1.3</hamcrest-core.version>
+        <!-- maven dependencies version -->
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <!-- maven dependencies version -->
+        <swagger-annotations.version>1.5.24</swagger-annotations.version>
+        <swagger-models.version>1.5.24</swagger-models.version>
+    </properties>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>spiritual-domain-example</groupId>
+    <artifactId>spiritual-domain-example-maven</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>spiritual-domain-example-mvc-jar</module>
+        <module>spiritual-domain-example-mvc-war</module>
+        <module>spiritual-domain-example-webflux</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- maven dependencies version -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency><!-- spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency><!-- spring-cloud-dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency><!-- spring-cloud-alibaba-dependencies -->
+            <!-- maven dependencies version -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency><!-- junit -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>${hamcrest-core.version}</version>
+                <scope>test</scope>
+            </dependency><!-- hamcrest-core -->
+            <!-- maven dependencies version -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency><!-- springfox-swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency><!-- springfox-swagger-ui -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency><!-- swagger-bootstrap-ui -->
+            <!-- maven dependencies version -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency><!-- swagger-annotations -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger-models.version}</version>
+            </dependency><!-- swagger-models -->
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- 使用 Log4j 作为日志记录器 -->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<groupId>*</groupId>-->
+        <!--<artifactId>*</artifactId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>aliyun-nexus</id>
+            <name>aliyun-nexus</name>
+            <url>https://maven.aliyun.com/repository/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-nexus</id>
+            <name>spring-nexus</name>
+            <url>https://repo.spring.io/artifactory/libs-milestone/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>maven-nexus</id>
+            <name>maven-nexus</name>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun-nexus</id>
+            <name>aliyun-nexus</name>
+            <url>https://maven.aliyun.com/repository/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-nexus</id>
+            <name>spring-nexus</name>
+            <url>https://repo.spring.io/artifactory/libs-milestone/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven-nexus</id>
+            <name>maven-nexus</name>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <!-- 配置远程发布仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://127.0.0.1:8888/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshots Repository</name>
+            <url>http://127.0.0.1:8888/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Maven settings.xml 需要配置账号密码才能发布到远程服务器 -->
+    <!--<servers>-->
+    <!--<server>-->
+    <!--<id>nexus-releases</id>-->
+    <!--<username>admin</username>-->
+    <!--<password>Admin123</password>-->
+    <!--</server>-->
+    <!--<server>-->
+    <!--<id>nexus-snapshots</id>-->
+    <!--<username>admin</username>-->
+    <!--<password>Admin123</password>-->
+    <!--</server>-->
+    <!--</servers>-->
+
+    <build>
+        <!-- plugins -->
+        <plugins>
+            <!-- versions-maven-plugin -->
+            <plugin>
+                <!-- 更新版本号：mvn versions:set -DnewVersion=1.0-SNAPSHOT -->
+                <!-- 回退版本号：mvn versions:revert -->
+                <!-- 提交版本号：mvn versions:commit -->
+                <!-- 直接修改版本号：mvn versions:set -DnewVersion=1.0-SNAPSHOT -DgenerateBackupPoms=false -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+            <!-- maven-clean-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
+            </plugin>
+            <!-- maven-compiler-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${maven.compiler.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- maven-dependency-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-lib</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${package.output.directory}/lib</outputDirectory>
+                            <excludeTransitive>false</excludeTransitive>
+                            <stripVersion>false</stripVersion>
+                            <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- maven-source-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- maven-resources-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <encoding>${project.reporting.outputEncoding}</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${package.output.directory}</outputDirectory>
+                            <resources>
+                                <!-- src/main/java -->
+                                <resource>
+                                    <directory>src/main/java</directory>
+                                    <includes>
+                                        <include>**/*.yml</include>
+                                        <include>**/*.properties</include>
+                                        <include>**/*.xml</include>
+                                    </includes>
+                                </resource>
+                                <!-- src/main/resources -->
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>**/*.yml</include>
+                                        <include>**/*.properties</include>
+                                        <include>**/*.xml</include>
+                                        <include>public/**</include>
+                                        <include>static/**</include>
+                                        <include>templates/**</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- maven-enforcer-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <!-- enforce-versions -->
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>${maven.compiler.compilerVersion}</version>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <version>${maven.compiler.mavenVersion}</version>
+                                </requireMavenVersion>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                    <!-- enforce-banned-dependencies -->
+                    <execution>
+                        <id>enforce-banned-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <excludes>
+                                        <exclude>junit:junit</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>junit:junit:4.12:jar:test</include>
+                                    </includes>
+                                </bannedDependencies>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- maven-install-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+            </plugin>
+            <!-- maven-deploy-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <!-- maven-site-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+            </plugin>
+            <!-- maven-surefire-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <!-- maven-jar-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${package.output.directory}</outputDirectory>
+                </configuration>
+            </plugin>
+            <!-- maven-war-plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${package.output.directory}</outputDirectory>
+                </configuration>
+            </plugin>
+            <!-- spring-boot-maven-plugin -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${package.output.directory}-exec</outputDirectory>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!-- resources -->
+        <resources>
+            <!-- src/main/java -->
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <!-- src/main/resources -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>META-INF/spring.factories</include>
+                    <include>public/**</include>
+                    <include>static/**</include>
+                    <include>templates/**</include>
+                </includes>
+            </resource>
+        </resources>
+        <!-- testResources -->
+        <testResources>
+            <!-- src/test/java -->
+            <testResource>
+                <directory>src/test/java</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+            </testResource>
+            <!-- src/test/resources -->
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>META-INF/spring.factories</include>
+                    <include>public/**</include>
+                    <include>static/**</include>
+                    <include>templates/**</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
+
+</project>

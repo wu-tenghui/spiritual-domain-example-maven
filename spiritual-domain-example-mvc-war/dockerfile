@@ -1,0 +1,7 @@
+FROM openjdk:8u212-jre-alpine
+EXPOSE 8080
+WORKDIR /opt
+VOLUME /tmp
+COPY target/release-exec/spiritual-domain-example-mvc-war-exec.war /opt/spiritual-domain-example-mvc-war-exec.war
+RUN sh -c 'touch /opt/spiritual-domain-example-mvc-war-exec.war' && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+ENTRYPOINT exec java -jar /opt/spiritual-domain-example-mvc-war-exec.war > /tmp/catalina.out 2>&1
